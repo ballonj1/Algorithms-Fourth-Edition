@@ -31,6 +31,14 @@ class Node {
     this.child = child;
   }
 
+  set newParent(node) {
+    this.parent = node;
+  }
+
+  set newChild(node) {
+    this.child = node;
+  }
+
   static findParent(node) {
     let parent = this.parent;
 
