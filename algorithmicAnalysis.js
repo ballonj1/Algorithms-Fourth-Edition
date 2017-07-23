@@ -15,3 +15,43 @@ const threeSum = (arr, target) => {
 };
 
 console.log(threeSum([1,2,3,4,5], 12));
+
+class UnionFind {
+  constructor(numberOfObjects) {
+
+
+  }
+
+  const union()
+}
+
+class Node {
+  constructor(parent, child) {
+    this.parent = parent;
+    this.child = child;
+  }
+
+  static findParent(node) {
+    let parent = this.parent;
+
+    while (parent !== undefined) {
+      if (parent === node) {
+        return true;
+      }
+      parent = parent.parent;
+    }
+    return false;
+  }
+
+  static findChild(node) {
+    let child = this.child;
+
+    while (child !== undefined) {
+      if (child === node) {
+        return true;
+      }
+      child = child.child;
+    }
+    return false;
+  }
+}
