@@ -16,14 +16,6 @@ const threeSum = (arr, target) => {
 
 console.log(threeSum([1,2,3,4,5], 12));
 
-class UnionFind {
-  constructor(numberOfObjects) {
-
-
-  }
-
-  const union()
-}
 
 class Node {
   constructor(parent, child) {
@@ -33,13 +25,15 @@ class Node {
 
   set newParent(node) {
     this.parent = node;
+    node.newChild = this;
   }
 
   set newChild(node) {
     this.child = node;
+    node.newParent = this;
   }
 
-  static findParent(node) {
+  findParent(node) {
     let parent = this.parent;
 
     while (parent !== undefined) {
@@ -51,7 +45,7 @@ class Node {
     return false;
   }
 
-  static findChild(node) {
+  findChild(node) {
     let child = this.child;
 
     while (child !== undefined) {
@@ -61,5 +55,43 @@ class Node {
       child = child.child;
     }
     return false;
+  }
+}
+
+
+class QuickFind {
+  constructor(nodes) {
+    this.store = baseConnections(nodes);
+  }
+
+  baseConnections(nodes) {
+    let connections = [];
+
+    for (let i = 0; i < nodes; i++) {
+      connections[i] = i;
+    }
+
+    return connections;
+  }
+
+  union(a, b) {
+    let valueToChange = this.store[a];
+    let valueToConnectTo = this.store[b];
+
+    this.store.forEach((currentValue, index) => {
+      if (currentValue === valueToChange) {
+        this.store[index] = valueToConnectTo;
+      }
+    });
+
+    return this.store;
+  }
+
+  connected(a, b) {
+    if (this.store[a] === this.store[b]) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
