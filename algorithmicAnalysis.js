@@ -18,20 +18,24 @@ console.log(threeSum([1,2,3,4,5], 12));
 
 
 class Node {
-  constructor(parent, child, value) {
+  constructor(parent, children, value) {
     this.parent = parent;
-    this.child = child;
+    this.children = children;
     this.value = value;
   }
 
   set newParent(node) {
-    this.parent = node;
-    node.newChild = this;
+    if (this.parent !== node) {
+      this.parent = node;
+      node.newChild = this;
+    }
   }
 
   set newChild(node) {
-    this.child = node;
-    node.newParent = this;
+    if (!this.children.includes(node)) {
+      this.children.push(node);
+      node.newParent = this;
+    }
   }
 
   root() {
@@ -57,15 +61,23 @@ class Node {
   }
 
   findChild(node) {
-    let child = this.child;
+    if (this === node) {
+      return true;
+    }
 
-    while (child !== undefined) {
+    if (this.children.length === 0) {
+      return false;
+    }
+
+    let found = this.children.some((child) => {
       if (child === node) {
         return true;
+      } else {
+        findChild(child);
       }
-      child = child.child;
-    }
-    return false;
+    })
+
+    return found;
   }
 }
 
