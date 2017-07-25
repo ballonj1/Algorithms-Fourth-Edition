@@ -18,9 +18,10 @@ console.log(threeSum([1,2,3,4,5], 12));
 
 
 class Node {
-  constructor(parent, child) {
+  constructor(parent, child, value) {
     this.parent = parent;
     this.child = child;
+    this.value = value;
   }
 
   set newParent(node) {
@@ -106,13 +107,13 @@ class QuickUnion {
     let connections = [];
 
     for (let i = 0; i < nodes; i++) {
-      connections[i] = i;
+      connections[i] = new Node;
     }
 
     return connections;
   }
 
   union(a, b) {
-    
+
   }
 }
