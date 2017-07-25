@@ -34,6 +34,16 @@ class Node {
     node.newParent = this;
   }
 
+  root() {
+    let parent = this.parent;
+
+    while(parent !== null) {
+      parent = parent.parent;
+    }
+
+    return parent;
+  }
+
   findParent(node) {
     let parent = this.parent;
 
@@ -107,13 +117,18 @@ class QuickUnion {
     let connections = [];
 
     for (let i = 0; i < nodes; i++) {
-      connections[i] = new Node;
+      connections[i] = new Node(null, null, i);
     }
 
     return connections;
   }
 
   union(a, b) {
-
+    var nodeToConnect;
+    if (a == this.store[a].value) {
+      nodeToConnect = this.store[a];
+    } else {
+      nodeToConnect = this.store[a].root();
+    }
   }
 }
