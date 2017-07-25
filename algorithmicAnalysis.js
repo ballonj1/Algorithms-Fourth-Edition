@@ -61,7 +61,8 @@ class Node {
 
 class QuickFind {
   constructor(nodes) {
-    this.store = baseConnections(nodes);
+    console.log(this);
+    this.store = this.baseConnections(nodes);
   }
 
   baseConnections(nodes) {
@@ -93,5 +94,25 @@ class QuickFind {
     } else {
       return false;
     }
+  }
+}
+
+class QuickUnion {
+  constructor(nodes) {
+    this.store = baseConnections(nodes)
+  }
+
+  baseConnections(nodes) {
+    let connections = [];
+
+    for (let i = 0; i < nodes; i++) {
+      connections[i] = i;
+    }
+
+    return connections;
+  }
+
+  union(a, b) {
+    
   }
 }
