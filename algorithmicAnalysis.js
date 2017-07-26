@@ -162,7 +162,7 @@ class Stack {
   }
 
   isEmpty() {
-    this.size === 0 ? true : false;
+    return this.size === 0 ? true : false;
   }
 
   size() {
