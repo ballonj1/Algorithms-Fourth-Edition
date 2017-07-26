@@ -164,8 +164,4 @@ class Stack {
   isEmpty() {
     return this.size === 0 ? true : false;
   }
-
-  size() {
-    return this.size;
-  }
 }
