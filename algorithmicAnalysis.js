@@ -144,3 +144,28 @@ class QuickUnion {
     }
   }
 }
+
+class Stack {
+  constructor() {
+    this.store = [];
+    this.size = 0;
+  }
+
+  pop() {
+    this.size--;
+    return this.store.pop();
+  }
+
+  push(element) {
+    this.size++;
+    return this.store.push(element);
+  }
+
+  isEmpty() {
+    this.size === 0 ? true : false;
+  }
+
+  size() {
+    return this.size;
+  }
+}
