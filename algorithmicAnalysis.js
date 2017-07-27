@@ -165,3 +165,32 @@ class Stack {
     return this.size === 0 ? true : false;
   }
 }
+
+Array.prototype.mergeSort = function() {
+  if (this.length <= 1) {
+    return this;
+  }
+
+  let halfWay = Math.floor(this.length / 2);
+  let leftHalf = this.slice(0, halfWay);
+  let rightHalf = this.slice(halfWay);
+
+  let leftSorted = leftHalf.mergeSort();
+  let rightSorted = rightHalf.mergeSort();
+
+  return [].merge(leftSorted, rightSorted);
+};
+
+Array.prototype.merge = function(a, b) {
+  let merged = [];
+
+  while (a.length > 0 && b.length > 0) {
+    if (a[0] < b[0]) {
+      merged.push(a.shift());
+    } else {
+      merged.push(b.shift());
+    }
+  }
+
+  return merged.concat(a, b);
+}
