@@ -194,3 +194,37 @@ Array.prototype.merge = function(a, b) {
 
   return merged.concat(a, b);
 }
+
+/*
+  Partition method will take in an array and return that array so that the number in the 0th index is now fully sorted
+
+*/
+
+Array.prototype.partition = function() {
+  let i = 1;
+  let j = this.length - 1;
+  let temp;
+
+  while (i < j) {
+    if (this[0] >= this[i]) {
+      i += 1;
+    } else {
+      if (this[j] <= this[0]) {
+        temp = this[i];
+        this[i] = this[j];
+        this[j] = temp;
+        i += 1;
+      }
+      j -= 1;
+    }
+  }
+
+  temp = this[i - 1];
+  this[i - 1] = this[0];
+  this[0] = temp;
+  return this;
+};
+
+Array.prototype.quicksort = function(hi, lo) {
+  
+};
