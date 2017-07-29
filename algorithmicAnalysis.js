@@ -201,6 +201,10 @@ Array.prototype.merge = function(a, b) {
 */
 
 Array.prototype.partition = function() {
+  if (this.length <= 1) {
+    return this;
+  }
+  
   let i = 1;
   let j = this.length - 1;
   let temp;
@@ -222,9 +226,27 @@ Array.prototype.partition = function() {
   temp = this[i - 1];
   this[i - 1] = this[0];
   this[0] = temp;
-  return this;
+
+  let leftHalfPartition = this.slice(0, i - 1).partition();
+  let rightHalfPartition = this.slice(i + 1).partition();
+
+  return leftHalfPartition + this[i - 1] + rightHalfPartition;
 };
 
-Array.prototype.quicksort = function(hi, lo) {
-  
+Array.prototype.quicksort = function() {
+  if (this.length <= 1) {
+    return this;
+  }
+
+  this = this.partiton();
+
+  let leftHalf = this.slice()
+
+  let leftHalf = this.slice(0, Math.floor(this.length / 2));
+  let rightHalf = this.slice(Math.floor(this.length / 2));
+
+
+
+
+
 };
