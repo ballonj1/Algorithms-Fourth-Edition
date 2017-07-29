@@ -249,7 +249,7 @@ Array.prototype.partition = function() {
 //
 // };
 
-fibs = (n) => {
+const fibs = (n) => {
   let fib = [0, 1];
   if (n < 2) {
     return fib.slice(0, n + 1);
@@ -258,4 +258,19 @@ fibs = (n) => {
   let lastFib = fibs(n - 1);
   lastFib.push(lastFib[lastFib.length - 2] + lastFib[lastFib.length - 1]);
   return lastFib;
+};
+
+const isPalindrome = (word) => {
+  let i = 0;
+  let j = word.length - 1;
+
+  while (i < j) {
+    if (word[i] !== word[j]) {
+      return false;
+    }
+    i += 1;
+    j -= 1;
+  }
+
+  return true;
 };
