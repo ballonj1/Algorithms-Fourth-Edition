@@ -204,7 +204,7 @@ Array.prototype.partition = function() {
   if (this.length <= 1) {
     return this;
   }
-  
+
   let i = 1;
   let j = this.length - 1;
   let temp;
@@ -233,20 +233,29 @@ Array.prototype.partition = function() {
   return leftHalfPartition + this[i - 1] + rightHalfPartition;
 };
 
-Array.prototype.quicksort = function() {
-  if (this.length <= 1) {
-    return this;
+// Array.prototype.quicksort = function() {
+//   if (this.length <= 1) {
+//     return this;
+//   }
+//
+//   this = this.partiton();
+//
+//   let leftHalf = this.slice(0, Math.floor(this.length / 2));
+//   let rightHalf = this.slice(Math.floor(this.length / 2));
+//
+//
+//
+//
+//
+// };
+
+fibs = (n) => {
+  let fib = [0, 1];
+  if (n < 2) {
+    return fib.slice(0, n + 1);
   }
 
-  this = this.partiton();
-
-  let leftHalf = this.slice()
-
-  let leftHalf = this.slice(0, Math.floor(this.length / 2));
-  let rightHalf = this.slice(Math.floor(this.length / 2));
-
-
-
-
-
+  let lastFib = fibs(n - 1);
+  lastFib.push(lastFib[lastFib.length - 2] + lastFib[lastFib.length - 1]);
+  return lastFib;
 };
