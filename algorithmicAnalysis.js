@@ -298,3 +298,16 @@ const sumFromFile = (fileName) => {
   let nums = fileLines.filter((line) => line[0] != "#").map((line) => parseInt(line));
   return nums.reduce((a, b) => a + b, 0);
 };
+
+const shuffle = (array) => {
+  let max = array.length;
+  let i = 0;
+  while (i < max) {
+    let newI = Math.floor(Math.random(0, max));
+    let temp = array[i];
+    array[i] = array[newI];
+    array[newI] = temp;
+    i += 1;
+  }
+  return array;
+};
