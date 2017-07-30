@@ -274,3 +274,16 @@ const isPalindrome = (word) => {
 
   return true;
 };
+
+
+const validIP = (string) => {
+  if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(string)) {
+    return false;
+  }
+  let numbers = string.split(".");
+
+  return numbers.every((number) => {
+    n = parseInt(number);
+    return (n >= 0 && n <= 255)
+  });
+};
