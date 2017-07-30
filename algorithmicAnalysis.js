@@ -287,3 +287,14 @@ const validIP = (string) => {
     return (n >= 0 && n <= 255)
   });
 };
+
+const sumFromFile = (fileName) => {
+  let file = new File(fileName);
+  file.open("r");
+  fileLines = []
+  while (!file.eof) {
+    fileLines.append(file.readln());
+  }
+  let nums = fileLines.filter((line) => line[0] != "#").map((line) => parseInt(line));
+  return nums.reduce((a, b) => a + b, 0);
+};
