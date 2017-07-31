@@ -311,3 +311,17 @@ const shuffle = (array) => {
   }
   return array;
 };
+
+const uniqSubs = (word) => {
+  let i = 0;
+  let uniq = new Set;
+  while (i < word.length - 1) {
+    let j = i + 1;
+    while (j < word.length) {
+      uniq.add(word.slice(i, j + 1))
+      j += 1;
+    }
+    i += 1;
+  };
+  return uniq;
+};
