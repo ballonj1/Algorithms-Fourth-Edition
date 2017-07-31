@@ -342,3 +342,25 @@ const largestContiguousSubSum = (array) => {
 
   return newHighest;
 };
+
+const sillyYears = (year) => {
+  let years = [];
+  let firstTwo = Math.floor(year / 100);
+  let lastTwo = year % 100;
+  let middleTwo = firstTwo + lastTwo;
+
+  let firstNum = Math.floor(year / 1000);
+  let lastNum = year % 10;
+
+  if (year < parseInt(`${firstNum}${middleTwo}0`)) {
+    for (var i = 0; i < 10; i++) {
+      years.push(parseInt(`${firstNum}${middleTwo}${i}`));
+    }
+  } else {
+    for (var i = 0; i < 10; i++) {
+      years.push(parseInt(`${firstNum + 1}${middleTwo}${i}`));
+    }
+  }
+
+  return years;
+};
