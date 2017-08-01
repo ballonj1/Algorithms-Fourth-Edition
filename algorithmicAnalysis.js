@@ -393,3 +393,23 @@ const binarySearch = (array, target) => {
 
 //array = [1,2,3,4,5]
 //target = 1
+
+
+const productify = (array) => {
+  let productified = new Array(array.length - 1);
+  productified.fill(1);
+
+  let lower = 1;
+  for (let i = 0; i < array.length; i++) {
+    productified = lower;
+    lower *= array[i];
+  }
+
+  let upper = 1;
+  for (let i = array.length - 1; i > -1; i--) {
+    productified *= upper;
+    upper *= array[i];
+  }
+
+  return productified;
+};
