@@ -364,3 +364,32 @@ const sillyYears = (year) => {
 
   return years;
 };
+
+const binarySearch = (array, target) => {
+  let midPoint = Math.floor(array.length / 2);
+
+  if (array[midPoint] === target) {
+    return midPoint;
+  } else if (array.length < 1) {
+    return false;
+  } else if (array.length === 1 && array[midPoint] !== target) {
+    return false;
+  }
+
+  let leftHalf = array.slice(0, midPoint);
+  let rightHalf = array.slice(midPoint + 1);
+
+  if (target < array[midPoint]) {
+    return binarySearch(leftHalf, target);
+  } else {
+    let sub = binarySearch(rightHalf, target);
+    if (!sub) {
+      return null;
+    } else {
+      return sub + midpoint + 1;
+    }
+  }
+};
+
+//array = [1,2,3,4,5]
+//target = 1
