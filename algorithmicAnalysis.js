@@ -401,15 +401,49 @@ const productify = (array) => {
 
   let lower = 1;
   for (let i = 0; i < array.length; i++) {
-    productified = lower;
+    productified[i] = lower;
     lower *= array[i];
   }
 
   let upper = 1;
   for (let i = array.length - 1; i > -1; i--) {
-    productified *= upper;
+    productified[i] *= upper;
     upper *= array[i];
   }
 
   return productified;
+};
+
+
+class Node {
+  constructor(prev = null, next = null) {
+    this.tail = false;
+    this.head = false;
+    this.prev = prev;
+    this.next = next;
+  }
+}
+
+class Table {
+  constructor() {
+    this.table = [];
+    this.head = null;
+    this.tail = null;
+  }
+
+  addPerson(node) {
+    this.table.push(node);
+    
+    if (this.table.length === 1) {
+      this.head = node;
+    } else if (this.table.length === 2) {
+      this.tail = node;
+    }
+
+    return this.table;
+  }
+}
+
+const seatedSorting = (name) => {
+
 };
