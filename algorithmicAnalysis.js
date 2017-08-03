@@ -509,17 +509,35 @@ const weightedRandomIndex = (array) => {
   for(let i = 1; i < array.length; i++) {
     total += array[i];
   }
-  console.log(total);
 
   let rand = Math.floor(Math.random() * total + 1);
-  console.log(rand)
   let runningTotal = 0;
 
   for (let i = 0; i < array.length; i++) {
-    console.log(rand > runningTotal && rand <= runningTotal + array[i])
     if (rand > runningTotal && rand <= runningTotal + array[i]) {
       return array[i];
     }
     runningTotal += array[i];
   }
+};
+
+const moveZeros = (array) => {
+  let i = 0;
+  let j = array.length - 1;
+
+  while (i < j) {
+    if (array[i] !== 0) {
+      i += 1;
+    } else if (array[i] === 0 && array[j] === 0) {
+      j -= 1;
+    } else {
+      array[i] = array[j];
+      array[j] = 0;
+
+      j -= 1;
+      i += 1;
+    }
+  }
+
+  return array;
 };
