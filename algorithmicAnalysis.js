@@ -474,3 +474,52 @@ const sortOne = (array) => {
 
   return sorted;
 };
+
+const sortTwo = (array) => {
+  let max = 0;
+
+  let i = 0
+  while (i < array.length) {
+    if (max < array[i]) {
+      max = array[i]
+    }
+    i+= 1
+  }
+
+  let sorted = new Array(max);
+
+  i = 0;
+  while (i < array.length) {
+    sorted[array[i] - 1] = array[i];
+    i += 1;
+  }
+
+  let result = [];
+  for (let i = 0; i < sorted.length; i++) {
+    if (sorted[i] !== undefined) {
+      result.push(sorted[i]);
+    }
+  }
+
+  return result;
+};
+
+const weightedRandomIndex = (array) => {
+  let total = array[0];
+  for(let i = 1; i < array.length; i++) {
+    total += array[i];
+  }
+  console.log(total);
+
+  let rand = Math.floor(Math.random() * total + 1);
+  console.log(rand)
+  let runningTotal = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    console.log(rand > runningTotal && rand <= runningTotal + array[i])
+    if (rand > runningTotal && rand <= runningTotal + array[i]) {
+      return array[i];
+    }
+    runningTotal += array[i];
+  }
+};
