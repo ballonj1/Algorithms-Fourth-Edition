@@ -416,34 +416,61 @@ const productify = (array) => {
 
 
 class Node {
-  constructor(prev = null, next = null) {
-    this.tail = false;
-    this.head = false;
-    this.prev = prev;
-    this.next = next;
+  constructor(name = '') {
+    this.name = name;
+    this.prev = null;
+    this.next = null;
   }
 }
 
 class Table {
   constructor() {
-    this.table = [];
+    this.tableCount = 0;
     this.head = null;
     this.tail = null;
   }
 
   addPerson(node) {
-    this.table.push(node);
-    
-    if (this.table.length === 1) {
-      this.head = node;
-    } else if (this.table.length === 2) {
-      this.tail = node;
-    }
+    this.tableCount += 1;
 
-    return this.table;
+    if (this.tableCount === 1) {
+      this.head = node;
+      return node;
+    } else if (this.tableCount === 2) {
+      this.tail = node;
+      this.tail.next = this.head;
+      this.tail.prev = this.head;
+      this.head.next = node;
+      this.head.prev = node;
+      return node;
+    } else {
+      this.tableCount += 1;
+
+      let currentNode = this.head;
+
+      while (!(node.name > currentNode && node.name < curentNode.next)) {
+        currentNode = currentNode.next;
+      }
+
+      node.next = currentNode.next;
+      node.prev = currentNode;
+
+      currentNode.next = node;
+      node.next.prev = node;
+    }
   }
 }
 
 const seatedSorting = (name) => {
 
+};
+
+const sortOne = (array) => {
+  let sorted = new Array(array.length);
+
+  for (let i = 1; i <= array.length; i++) {
+    sorted[i - 1] = i;
+  }
+
+  return sorted;
 };
