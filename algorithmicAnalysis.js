@@ -541,3 +541,21 @@ const moveZeros = (array) => {
 
   return array;
 };
+
+const lookAndSay = (array) => {
+  let counter = 1;
+  let result = [];
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] === array[i - 1]) {
+      counter += 1;
+    } else {
+      result.push([counter, array[i - 1]]);
+      counter = 1;
+    }
+  }
+
+  result.push([counter, array[array.length - 1]]);
+
+  return result;
+};
