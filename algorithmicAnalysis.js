@@ -617,3 +617,24 @@ const digitalRoot = (number) => {
     return ones + digitalRoot(remainder);
   }
 };
+
+const sumRec = (arr) => {
+  if (arr.length === 1) {
+    return arr[0];
+  } else {
+    return arr[0] + sumRec(arr.slice(1));
+  }
+};
+
+const recFib = (n) => {
+  let fibs = [0, 1];
+  if (n <= 2) {
+    return fibs.slice(0, n);
+  }
+
+  let lastFib = recFib(n - 1);
+
+  lastFib.push(lastFib[lastFib.length - 1] + lastFib[lastFib.length - 2]);
+
+  return lastFib;
+};
