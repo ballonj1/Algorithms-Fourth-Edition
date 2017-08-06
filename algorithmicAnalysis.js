@@ -602,3 +602,18 @@ const caesarCipher = (string, offset) => {
 
   return newChars.join('');
 };
+
+const digitalRoot = (number) => {
+  if (number < 10) {
+    return number;
+  }
+
+  let ones = number % 10;
+  let remainder = Math.floor(number / 10)
+
+  if (ones + remainder < 10) {
+    return ones + remainder
+  } else {
+    return ones + digitalRoot(remainder);
+  }
+};
