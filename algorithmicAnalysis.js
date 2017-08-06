@@ -574,3 +574,31 @@ const sumsOnSums = (array) => {
 
   return expectedTotal - inputTotal;
 };
+
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.parent = null;
+    this.children = null;
+  }
+}
+
+
+const caesarCipher = (string, offset) => {
+  let chars = string.split('');
+  const ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p'];
+
+  const newChars = chars.map((currentValue) => {
+    if (/ /.test(currentValue)) {
+      return currentValue;
+    } else {
+      let indexOfChar = ALPHABET.indexOf(currentValue);
+      let newIndex = (indexOfChar + offset) % 25;
+
+      return ALPHABET[newIndex];
+    }
+  })
+
+  return newChars.join('');
+};
