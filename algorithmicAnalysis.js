@@ -638,3 +638,18 @@ const recFib = (n) => {
 
   return lastFib;
 };
+
+const itFib = (n) => {
+  let fibs = [0, 1];
+  if (n <= 2) {
+    return fibs.slice(0, n);
+  }
+
+  while (fibs.length < n) {
+    fibs.push(fibs[fibs.length - 1] + fibs[fibs.length - 2]);
+  }
+
+  return fibs;
+
+
+};
