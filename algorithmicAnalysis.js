@@ -650,6 +650,40 @@ const itFib = (n) => {
   }
 
   return fibs;
+};
 
+const longestCommonSubstring = (str1, str2) => {
+  let arrayCount = str1.length;
+  let arrayLength = str2.length;
+
+  let matrix = [];
+
+  while (matrix.length < array.count) {
+    let nextRow = [];
+
+    for(let i = 0; i < array.length; i++) {
+      nextRow.push(0);
+    }
+
+    matrix.push(nextRow);
+  }
+
+  i = 0;
+
+  while (i < str1.length) {
+    let j = 0
+
+    while (j < str2.length) {
+      if (str[i] === str[j]) {
+        if (i == 0 || j == 0) {
+          matrix[i][j] = 1;
+        } else {
+          matrix[i][j] = matrix[i - 1][j - 1] + 1
+        }
+      }
+      j += 1
+    }
+    i += 1;
+  }
 
 };
