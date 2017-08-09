@@ -721,3 +721,30 @@ const largestContiguousSubsum = (array) => {
 
   return largestSub;
 };
+
+
+const sillyYears = (year) => {
+  let silliestYears = [];
+
+  let firstTwoDigits = Math.floor(year / 100);
+  let lastTwoDigits = year % 100;
+
+  let middleTwoDigits = firstTwoDigits + lastTwoDigits;
+
+  let firstDigit = Math.floor(year / 1000);
+
+  let nextYear = ((firstDigit * 1000) + (middleTwoDigits * 10));
+
+  if (nextYear > year) {
+    for (let i = 0; i < 10; i++) {
+      silliestYears.push(nextYear + i);
+    }
+  } else {
+    newDigit = firstDigit + 1;
+    let greaterYear = (newDigit * 1000) + (middleTwoDigits * 10);
+    for (let i = 0; i < 10; i++) {
+      silliestYears.push(greaterYear + i);
+    }
+  }
+  return silliestYears;
+};
