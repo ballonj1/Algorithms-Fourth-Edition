@@ -672,7 +672,6 @@ const longestCommonSubstring = (str1, str2) => {
 
   while (i < str1.length) {
     let j = 0
-
     while (j < str2.length) {
       if (str[i] === str[j]) {
         if (i == 0 || j == 0) {
@@ -685,5 +684,19 @@ const longestCommonSubstring = (str1, str2) => {
     }
     i += 1;
   }
+};
 
+const numberSums = (num) => {
+
+};
+
+const uniqSubs = (string) => {
+  let subs = new Set();
+  for(let i = 0; i < string.length; i++) {
+    for(let j = i; j < string.length; j++) {
+      subs.add(string.slice(i, j + 1));
+    }
+  }
+
+  return subs.entries();
 };
