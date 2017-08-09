@@ -700,3 +700,24 @@ const uniqSubs = (string) => {
 
   return subs.entries();
 };
+
+const largestContiguousSubsum = (array) => {
+  let currentSub = 0;
+  let largestSub = 0;
+
+  array.forEach((currentValue, index, array) => {
+    if (currentSub + currentValue < 0) {
+      if (currentSub > largestSub) {
+        largestSub = currentSub;
+      }
+      currentSub = 0;
+    } else if (currentSub + currentValue > largestSub){
+      currentSub += currentValue;
+      largestSub = currentSub;
+    } else {
+      currentSub += currentValue;
+    }
+  });
+
+  return largestSub;
+};
