@@ -748,3 +748,27 @@ const sillyYears = (year) => {
   }
   return silliestYears;
 };
+
+const binarySearch = (array, target) => {
+  let midPoint = Math.floor(array.length / 2);
+
+  if (array[midPoint] === target) {
+    return midPoint;
+  } else if (array.length <= 1 && array[midPoint] !== target) {
+    return null;
+  }
+
+  if (array[midPoint] > target) {
+    return binarySearch(array.slice(0, midPoint), target);
+  } else {
+    let rightSearch = binarySearch(array.slice(midPoint + 1), target);
+
+    if (rightSearch !== null) {
+      return midPoint + rightSearch + 1;
+    } else {
+      return null;
+    }
+  }
+};
+
+[1,2,3,4]
