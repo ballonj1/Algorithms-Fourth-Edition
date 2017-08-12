@@ -772,3 +772,58 @@ const binarySearch = (array, target) => {
 };
 
 [1,2,3,4]
+
+
+function degreeOfArray(array) {
+  let numAndCount = {};
+  let degree = 0;
+
+  array.forEach((number) => {
+    if (numAndCount[number]) {
+      numAndCount[number] += 1;
+      if (degree < numAndCount[number]) {
+        degree = numAndCount[number];
+      }
+    } else {
+      numAndCount[number] = 1;
+      if (degree === 0) {
+        degree = 1;
+      }
+    }
+  });
+
+  let nums = [];
+  Object.keys(numAndCount).forEach((key) => {
+    if (numAndCount[key] === degree) {
+      nums.push(parseInt(key));
+    }
+  });
+
+  let degreeArrays = [];
+  nums.forEach((num) => {
+    let i = 0;
+    let j = array.length - 1;
+
+    while (array[i] !== num) {
+      i += 1;
+    }
+
+    while (array[j] !== num) {
+      j -= 1;
+    }
+
+    degreeArrays.push([i, j]);
+  });
+
+  let greatestDifference = [];
+
+  degreeArrays.forEach((degrees) => {
+    if (greatestDifference.length === 0) {
+      greatestDifference = degrees;
+    } else if ((greatestDifference[1] - greatestDifference[0]) > (degrees[1] - degrees[0])) {
+      greatestDifference = degrees;
+    }
+  })
+
+  return array.slice(greatestDifference[0], greatestDifference[1] + 1);
+}
