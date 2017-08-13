@@ -827,3 +827,30 @@ function degreeOfArray(array) {
 
   return array.slice(greatestDifference[0], greatestDifference[1] + 1);
 }
+
+// [1,2,3,4,5]
+
+function consecutiveSum(array, target) {
+  let i = 0;
+  let j = 1;
+  let range = array[i] + array[j];
+  let total = 0;
+
+  while (i < array.length && j !== array.length && i !== j) {
+    if (range === target) {
+      total += 1;
+      range -= array[i];
+      i += 1;
+      j += 1;
+      range += array[j];
+    } else if (range < target) {
+      j += 1;
+      range += array[j];
+    } else if (range > target) {
+      range -= array[i];
+      i += 1;
+    }
+  }
+
+  return total;
+}
