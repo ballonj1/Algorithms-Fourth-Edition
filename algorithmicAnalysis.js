@@ -897,3 +897,18 @@ const binarySearch = (array, target) => {
     }
   }
 };
+
+const sumsOnSums = (array) => {
+  let inputTotal = 0;
+  let expectedTotal = 0;
+
+  for(let i = 0; i < array.length; i++) {
+    inputTotal += array[i];
+  }
+
+  for(let i = 0; i < array.length + 1; i++) {
+    expectedTotal += i;
+  }
+
+  return expectedTotal - inputTotal;
+};
