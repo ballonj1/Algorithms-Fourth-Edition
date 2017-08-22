@@ -912,3 +912,15 @@ const sumsOnSums = (array) => {
 
   return expectedTotal - inputTotal;
 };
+
+function numToBinary(n) {
+  let binaryString = "";
+
+  while (n > 0) {
+    let nextBit = n % 2;
+    binaryString = nextBit + binaryString;
+    n = Math.floor(n / 2);
+  }
+
+  return binaryString;
+}
