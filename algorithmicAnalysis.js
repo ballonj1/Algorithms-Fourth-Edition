@@ -981,7 +981,7 @@ LinkedList.prototype.removeNode = function(value) {
   let node = this.firstNode;
   while (node) {
     if (node.value === value) {
-      if (node = this.firstNode) {
+      if (node === this.firstNode) {
         this.firstNode = node.next;
         this.firstNode.prev = undefined;
       } else if (node.next === undefined){
