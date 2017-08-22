@@ -944,9 +944,10 @@ function recFact(n) {
   return n * recFact(n - 1);
 }
 
-function Link(next = undefined, prev = undefined) {
+function Link(value, next = undefined, prev = undefined) {
   this.next = next;
   this.prev = prev;
+  this.value = value;
 }
 
 function LinkedList(firstNode = undefined, lastNode = undefined) {
@@ -964,7 +965,7 @@ LinkedList.prototype.push = function(node) {
     this.firstNode.next = oldFirst;
     oldFirst.prev = this.firstNode;
   }
-}
+};
 
 LinkedList.prototype.pop = function() {
   if (this.first === undefined) {
@@ -974,12 +975,26 @@ LinkedList.prototype.pop = function() {
     newLast.next = undefined;
     this.lastNode = newLast;
   }
-}
+};
 
 LinkedList.prototype.first = function() {
   return this.firstNode;
-}
+};
 
 LinkedList.prototype.last = function() {
   return this.lastNode;
-}
+};
+
+LinkedList.prototype.removeNode = function(value) {
+  let node = this.firstNode;
+  while (node) {
+    if (node.value === value) {
+      node.prev = node.next.prev;
+      node.prev.next = node.next;
+      return node;
+    } else {
+      node = node.next;
+    }
+  }
+  return false;
+};
