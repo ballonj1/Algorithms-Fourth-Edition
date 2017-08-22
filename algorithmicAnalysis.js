@@ -998,3 +998,23 @@ LinkedList.prototype.removeNode = function(value) {
   }
   return false;
 };
+
+function partition(array) {
+  let pivot = array[array.length - 1];
+  let pivotIndex = 0;
+  let comparisonIndex = 0;
+
+  while (comparisonIndex < array.length) {
+    if (array[pivotIndex] > pivot) {
+      while (comparisonIndex < array.length - 1 && array[comparisonIndex] > pivot) {
+        comparisonIndex += 1;
+      }
+      if (comparisonIndex < array.length - 1) {
+        let temp = array[pivotIndex];
+        array[pivotIndex] = array[comparisonIndex];
+        array[comparisonIndex] = temp;
+        pivotIndex += 1;
+      }
+    }
+  }
+}
