@@ -576,14 +576,6 @@ const sumsOnSums = (array) => {
 };
 
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.parent = null;
-    this.children = null;
-  }
-}
-
 
 const caesarCipher = (string, offset) => {
   let chars = string.split('');
@@ -951,12 +943,12 @@ function Link(value, next = undefined, prev = undefined) {
 }
 
 function LinkedList(firstNode = undefined, lastNode = undefined) {
-  this.firstNode = first;
-  this.lastNode = last;
+  this.firstNode = firstNode;
+  this.lastNode = lastNode;
 }
 
 LinkedList.prototype.push = function(node) {
-  if (this.first === undefined) {
+  if (this.first() === undefined) {
     this.firstNode = node;
     this.lastNode = node;
   } else {
@@ -968,7 +960,7 @@ LinkedList.prototype.push = function(node) {
 };
 
 LinkedList.prototype.pop = function() {
-  if (this.first === undefined) {
+  if (this.first() === undefined) {
     return;
   } else {
     let newLast = this.lastNode.prev;
@@ -989,8 +981,16 @@ LinkedList.prototype.removeNode = function(value) {
   let node = this.firstNode;
   while (node) {
     if (node.value === value) {
-      node.prev = node.next.prev;
-      node.prev.next = node.next;
+      if (node = this.firstNode) {
+        this.firstNode = node.next;
+        this.firstNode.prev = undefined;
+      } else if (node.next === undefined){
+        this.lastNode = node.prev;
+        this.lastNode.next = undefined;
+      } else {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+      }
       return node;
     } else {
       node = node.next;
