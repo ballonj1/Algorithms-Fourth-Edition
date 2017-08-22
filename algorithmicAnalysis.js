@@ -943,3 +943,43 @@ function recFact(n) {
 
   return n * recFact(n - 1);
 }
+
+function Link(next = undefined, prev = undefined) {
+  this.next = next;
+  this.prev = prev;
+}
+
+function LinkedList(firstNode = undefined, lastNode = undefined) {
+  this.firstNode = first;
+  this.lastNode = last;
+}
+
+LinkedList.prototype.push = function(node) {
+  if (this.first === undefined) {
+    this.firstNode = node;
+    this.lastNode = node;
+  } else {
+    let oldFirst = this.firstNode;
+    this.firstNode = node;
+    this.firstNode.next = oldFirst;
+    oldFirst.prev = this.firstNode;
+  }
+}
+
+LinkedList.prototype.pop = function() {
+  if (this.first === undefined) {
+    return;
+  } else {
+    let newLast = this.lastNode.prev;
+    newLast.next = undefined;
+    this.lastNode = newLast;
+  }
+}
+
+LinkedList.prototype.first = function() {
+  return this.firstNode;
+}
+
+LinkedList.prototype.last = function() {
+  return this.lastNode;
+}
