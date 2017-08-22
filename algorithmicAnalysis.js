@@ -984,7 +984,7 @@ LinkedList.prototype.removeNode = function(value) {
       if (node === this.firstNode) {
         this.firstNode = node.next;
         this.firstNode.prev = undefined;
-      } else if (node.next === undefined){
+      } else if (node === this.lastNode) {
         this.lastNode = node.prev;
         this.lastNode.next = undefined;
       } else {
