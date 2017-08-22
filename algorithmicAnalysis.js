@@ -924,3 +924,22 @@ function numToBinary(n) {
 
   return binaryString;
 }
+
+function itFact(n) {
+  let runningSum = n;
+
+  while (n > 0) {
+    n -= 1;
+    runningSum *= n;
+  }
+
+  return runningSum;
+}
+
+function recFact(n) {
+  if (n === 1) {
+    return n;
+  }
+
+  return n * recFact(n - 1);
+}
