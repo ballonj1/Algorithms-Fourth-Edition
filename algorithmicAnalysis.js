@@ -1004,7 +1004,7 @@ function partition(array) {
   let pivotIndex = 0;
   let comparisonIndex = 0;
 
-  while (comparisonIndex < array.length) {
+  while (comparisonIndex < array.length - 1) {
     if (array[pivotIndex] > pivot) {
       while (comparisonIndex < array.length - 1 && array[comparisonIndex] > pivot) {
         comparisonIndex += 1;
@@ -1015,6 +1015,57 @@ function partition(array) {
         array[comparisonIndex] = temp;
         pivotIndex += 1;
       }
+    } else {
+      if (pivotIndex === comparisonIndex) {
+        comparisonIndex += 1;
+      }
+      pivotIndex += 1;
     }
   }
+  let temp = pivot;
+  array[array.length - 1] = array[pivotIndex];
+  array[pivotIndex] = temp;
+  return array;
+}
+
+function permutations(arr) {
+  if (arr.length === 0) {
+    return [[]];
+  }
+
+  let perms = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let el = arr[i];
+    let rest = arr.slice(0, i) + arr.slice(i + 1);
+
+    let somePerms = permutations(rest);
+
+    somePerms.map((perm) => {
+      let newPerms = [];
+      let newPerm;
+      let i = 0;
+      while (i <= perm.length)
+    });
+  }
+}
+
+function fiveSort(arr) {
+  let i = 0;
+  let j = arr.length - 1;
+
+  while (i < j) {
+    if (arr[i] === 5) {
+      if (arr[j] !== 5) {
+        arr[i] = arr[j];
+        arr[j] = 5;
+      } else {
+        j -= 1;
+      }
+    } else {
+      i += 1;
+    }
+  }
+
+  return arr;
 }
