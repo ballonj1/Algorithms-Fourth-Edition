@@ -1101,3 +1101,24 @@ function oneOffWords(str, arr) {
 
   return oneOff;
 }
+
+function encrypt(str) {
+  let i = 0;
+  let encrypted = [];
+  let letter = str[0];
+  let count = 0;
+
+  while (i < str.length) {
+    if (str[i] === letter) {
+      count += 1;
+    } else {
+      encrypted.push([letter, count]);
+      letter = str[i];
+      count = 1;
+    }
+    i += 1;
+  }
+  encrypted.push([letter, count]);
+
+  return encrypted;
+}
