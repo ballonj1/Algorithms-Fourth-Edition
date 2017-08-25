@@ -1081,3 +1081,23 @@ function numToBinary(n) {
 
   return binaryString;
 }
+
+function oneOffWords(str, arr) {
+  let oneOff = [];
+
+  arr.forEach((word) => {
+    let i = 0;
+    let offCount = 0;
+    while (i < word.length) {
+      if (word[i] !== str[i]) {
+        offCount += 1;
+      }
+      i += 1;
+    }
+    if (word.length === str.length && offCount <= 1) {
+      oneOff.push(word);
+    }
+  });
+
+  return oneOff;
+}
