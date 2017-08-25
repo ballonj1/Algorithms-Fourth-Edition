@@ -1069,3 +1069,15 @@ function fiveSort(arr) {
 
   return arr;
 }
+
+function numToBinary(n) {
+  let binaryString = "";
+
+  while (n > 0) {
+    let nextBit = n % 2;
+    binaryString = nextBit + binaryString;
+    n = Math.floor(n / 2);
+  }
+
+  return binaryString;
+}
