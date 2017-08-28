@@ -1,5 +1,11 @@
-Array.prototype.quicksort = function (){
-
+function quicksort(arr, lo, hi) {
+  if (hi <= lo) {
+    return arr;
+  }
+  let partitionIndex = partition(arr, lo, hi);
+  quicksort(arr, lo, partitionIndex - 1);
+  quicksort(arr, partitionIndex + 1, hi);
+  return arr;
 }
 
 function partition(arr, lo, hi) {
