@@ -1122,3 +1122,20 @@ function encrypt(str) {
 
   return encrypted;
 }
+
+const weightedRandomIndex = (array) => {
+  let total = array[0];
+  for(let i = 1; i < array.length; i++) {
+    total += array[i];
+  }
+
+  let rand = Math.floor(Math.random() * total + 1);
+  let runningTotal = 0;
+
+  for (let i = 0; i < array.length; i++) {
+    if (rand > runningTotal && rand <= runningTotal + array[i]) {
+      return array[i];
+    }
+    runningTotal += array[i];
+  }
+};
