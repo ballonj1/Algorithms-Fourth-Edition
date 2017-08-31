@@ -22,7 +22,7 @@ BSTNode.prototype.findMin = function(currentNode) {
   if (currentNode.leftChild === null) {
     return currentNode;
   } else {
-    return BSTNode.prototype.leftChild.findMin();
+    return BSTNode.prototype.findMin(currentNode.leftChild);
   }
 }
 
@@ -30,7 +30,7 @@ BSTNode.prototype.findMax = function(currentNode) {
   if (currentNode.rightChild === null) {
     return this;
   } else {
-    return BSTNode.prototype.rightChild.findMax(currentNode);
+    return BSTNode.prototype.findMax(currentNode.rightChild);
   }
 }
 
@@ -69,10 +69,36 @@ BSTNode.prototype.height = function(currentNode) {
 
 BSTNode.prototype.delete = function(currentNode, key) {
   if (currentNode === null) {
-    return false;
+    return null;
+  } else if (currentNode.key === key) {
+    if (currentNode.rightChild === null && currentNode.leftChild === null) {
+      return null;
+    } else if (currentNode.rightChild === null || currentNode.leftChild === null) {
+      return currentNode.rightChild || currentNode.leftChild;
+    } else {
+      let min = BSTNode.prototype.findMin(currentNode.rightChild);
+      min.rightChild = BSTNode.prototype.delete(currentNode.rightChild, min.key);
+      min.leftChild = currentNode.leftChild;
+      return min;
+    }
+  } else if (key < currentNode.key) {
+    currentNode.leftChild = BSTNode.prototype.delete(currentnode.leftChild, key);
+  } else if (key > currentNode.key) {
+    currentNode.rightChild = BSTNode.prototype.delete(currentNode.rightChild, key);
+  }
+  return currentNode;
+}
+
+BSTNode.prototype.inOrder = function(currentNode) {
+  let ordered = [];
+
+  if (currentNode === null) {
+    return ordered;
   }
 
-  if (currentNode.key === key) {
+  ordered = ordered.concat(BSTNode.prototype.inOrder(currentNode.leftChild));
+  ordered.push(currentNode.key);
+  ordered = ordered.concat(BSTNode.prototype.inOrder(currentNode.rightChild));
 
-  }
+  return ordered;
 }
