@@ -1139,3 +1139,20 @@ const weightedRandomIndex = (array) => {
     runningTotal += array[i];
   }
 };
+
+const largestContiguousSubSum = (array) => {
+  let sum = 0;
+  let newHighest = 0;
+
+  array.forEach((number) => {
+    let nextSum = sum + number;
+    if (nextSum < 0) {
+      sum = 0;
+    } else if (nextSum > newHighest) {
+      newHighest = nextSum;
+    }
+    sum = nextSum;
+  });
+
+  return newHighest;
+};
